@@ -44,7 +44,9 @@
 // });
 
 import {StatusBar} from 'react-native';
-import AuthContextProvider, {AuthContext} from './src/store/auth-context';
+import AuthContextProvider, {
+  AuthContext,
+} from './src/store/context/auth-context';
 import {useContext, useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import BootSplash from 'react-native-bootsplash';

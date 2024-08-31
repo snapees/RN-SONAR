@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useContext} from 'react';
-import {AuthContext} from '../store/auth-context';
+import {AuthContext} from '../store/context/auth-context';
 
 function WelcomeScreen() {
   const authCtx = useContext(AuthContext);
