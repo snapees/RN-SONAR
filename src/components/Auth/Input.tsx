@@ -35,7 +35,7 @@ function Input({
   const [inputValue, setInputValue] = useState(value);
 
   const handleTextChange = (text: string) => {
-    console.log('Input text:', text);
+    // console.log('Input text:', text);
     setInputValue(text);
     onUpdateValue(text, type);
   };

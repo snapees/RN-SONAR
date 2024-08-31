@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 import {useState} from 'react';
 import {ColorSchemeName, Alert, StyleSheet, View} from 'react-native';
@@ -6,8 +7,8 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import FlatButton from '../UI/FlatButton';
 import AuthForm from './AuthForm';
-import {useTheme} from '../../hooks/useTheme';
 import {Colors} from '../../constants/colors';
+import {useTheme} from '../../hooks/useTheme';
 
 interface AuthContentProps {
   isLogin?: boolean;
@@ -51,20 +52,25 @@ function AuthContent({isLogin, onAuthenticate}: AuthContentProps) {
     const emailsAreEqual = email === confirmEmail;
     const passwordsAreEqual = password === confirmPassword;
 
-    if (
-      !emailIsValid ||
-      !passwordIsValid ||
-      (!isLogin && (!emailsAreEqual || !passwordsAreEqual))
-    ) {
-      Alert.alert('Invalid input', 'Please check your entered credentials.');
-      setCredentialsInvalid({
-        email: !emailIsValid,
-        confirmEmail: !emailIsValid || !emailsAreEqual,
-        password: !passwordIsValid,
-        confirmPassword: !passwordIsValid || !passwordsAreEqual,
-      });
-      return;
-    }
+    console.log('emailIsValid:', emailIsValid);
+    console.log('passwordIsValid:', passwordIsValid);
+    console.log('emailsAreEqual:', emailsAreEqual);
+    console.log('passwordsAreEqual:', passwordsAreEqual);
+
+    // if (
+    //   !emailIsValid ||
+    //   !passwordIsValid ||
+    //   (!isLogin && (!emailsAreEqual || !passwordsAreEqual))
+    // ) {
+    //   Alert.alert('Invalid input', 'Please check your entered credentials.');
+    //   setCredentialsInvalid({
+    //     email: !emailIsValid,
+    //     confirmEmail: !emailIsValid || !emailsAreEqual,
+    //     password: !passwordIsValid,
+    //     confirmPassword: !passwordIsValid || !passwordsAreEqual,
+    //   });
+    //   return;
+    // }
     onAuthenticate({email, password});
   }
 
