@@ -52,10 +52,10 @@ function AuthContent({isLogin, onAuthenticate}: AuthContentProps) {
     const emailsAreEqual = email === confirmEmail;
     const passwordsAreEqual = password === confirmPassword;
 
-    console.log('emailIsValid:', emailIsValid);
-    console.log('passwordIsValid:', passwordIsValid);
-    console.log('emailsAreEqual:', emailsAreEqual);
-    console.log('passwordsAreEqual:', passwordsAreEqual);
+    // console.log('emailIsValid:', emailIsValid);
+    // console.log('passwordIsValid:', passwordIsValid);
+    // console.log('emailsAreEqual:', emailsAreEqual);
+    // console.log('passwordsAreEqual:', passwordsAreEqual);
 
     // if (
     //   !emailIsValid ||
