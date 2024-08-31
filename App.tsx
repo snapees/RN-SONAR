@@ -43,7 +43,7 @@
 //   },
 // });
 
-import {StatusBar, useColorScheme} from 'react-native';
+import {StatusBar} from 'react-native';
 import AuthContextProvider, {AuthContext} from './src/store/auth-context';
 import {useContext, useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -56,15 +56,19 @@ import SignupScreen from './src/screens/SignupScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 // import IconButton from './src/components/UI/IconButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ThemeProvider, {useTheme} from './src/hooks/useTheme';
 
 const Stack = createNativeStackNavigator();
 
 function AuthStack() {
-  const colorScheme = useColorScheme();
+  // const colorScheme = useColorScheme();
+  const {colorScheme} = useTheme();
+  console.log('AuthStack Theme: ', colorScheme);
 
   return (
     <Stack.Navigator
       screenOptions={{
+        headerShown: false,
         headerStyle: {
           backgroundColor: Colors[colorScheme ?? 'light'].primary500,
         },
@@ -81,7 +85,8 @@ function AuthStack() {
 
 function AuthenticatedStack() {
   const authCtx = useContext(AuthContext);
-  const colorScheme = useColorScheme();
+  // const colorScheme = useColorScheme();
+  const {colorScheme} = useTheme();
 
   return (
     <Stack.Navigator
@@ -164,7 +169,9 @@ export default function App() {
   return (
     <>
       <AuthContextProvider>
-        <Root />
+        <ThemeProvider>
+          <Root />
+        </ThemeProvider>
       </AuthContextProvider>
       <StatusBar barStyle="default" />
     </>
