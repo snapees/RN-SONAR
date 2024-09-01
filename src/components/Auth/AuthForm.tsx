@@ -4,7 +4,23 @@ import {StyleSheet, View} from 'react-native';
 import Input from './Input';
 import Button from '../UI/Button';
 
-function AuthForm({isLogin, onSubmit, credentialsInvalid}) {
+interface AuthFormProps {
+  isLogin?: boolean;
+  onSubmit: ({
+    email,
+    password,
+    confirmEmail,
+    confirmPassword,
+  }: {
+    email: string;
+    password: string;
+    confirmEmail: string;
+    confirmPassword: string;
+  }) => void;
+  credentialsInvalid: Record<string, boolean>;
+}
+
+function AuthForm({isLogin, onSubmit, credentialsInvalid}: AuthFormProps) {
   const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredConfirmEmail, setEnteredConfirmEmail] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
@@ -18,6 +34,7 @@ function AuthForm({isLogin, onSubmit, credentialsInvalid}) {
   } = credentialsInvalid;
 
   function updateInputValueHandler(inputType: string, enteredValue: string) {
+    console.log(`inputType-${inputType}, enteredValue-${enteredValue}`);
     switch (inputType) {
       case 'email':
         setEnteredEmail(enteredValue);
@@ -53,7 +70,7 @@ function AuthForm({isLogin, onSubmit, credentialsInvalid}) {
           value={enteredEmail}
           keyboardType="email-address"
           isInvalid={emailIsInvalid}
-          secure={false}
+          // secure={false}
         />
         {!isLogin && (
           <Input
@@ -63,7 +80,7 @@ function AuthForm({isLogin, onSubmit, credentialsInvalid}) {
             value={enteredConfirmEmail}
             keyboardType="email-address"
             isInvalid={emailsDontMatch}
-            secure={false}
+            // secure={false}
           />
         )}
         <Input
@@ -73,7 +90,7 @@ function AuthForm({isLogin, onSubmit, credentialsInvalid}) {
           secure
           value={enteredPassword}
           isInvalid={passwordIsInvalid}
-          keyboardType="default"
+          // keyboardType="default"
         />
         {!isLogin && (
           <Input
@@ -83,7 +100,7 @@ function AuthForm({isLogin, onSubmit, credentialsInvalid}) {
             secure
             value={enteredConfirmPassword}
             isInvalid={passwordsDontMatch}
-            keyboardType="default"
+            // keyboardType="default"
           />
         )}
         <View style={styles.buttons}>

@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
+
 import {useState} from 'react';
-import {ColorSchemeName, Alert, StyleSheet, View} from 'react-native';
+import {ColorSchemeName, Alert, StyleSheet, View, Text} from 'react-native';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
@@ -57,34 +58,39 @@ function AuthContent({isLogin, onAuthenticate}: AuthContentProps) {
     // console.log('emailsAreEqual:', emailsAreEqual);
     // console.log('passwordsAreEqual:', passwordsAreEqual);
 
-    // if (
-    //   !emailIsValid ||
-    //   !passwordIsValid ||
-    //   (!isLogin && (!emailsAreEqual || !passwordsAreEqual))
-    // ) {
-    //   Alert.alert('Invalid input', 'Please check your entered credentials.');
-    //   setCredentialsInvalid({
-    //     email: !emailIsValid,
-    //     confirmEmail: !emailIsValid || !emailsAreEqual,
-    //     password: !passwordIsValid,
-    //     confirmPassword: !passwordIsValid || !passwordsAreEqual,
-    //   });
-    //   return;
-    // }
+    if (
+      !emailIsValid ||
+      !passwordIsValid ||
+      (!isLogin && (!emailsAreEqual || !passwordsAreEqual))
+    ) {
+      Alert.alert('Invalid input', 'Please check your entered credentials.');
+      setCredentialsInvalid({
+        email: !emailIsValid,
+        confirmEmail: !emailIsValid || !emailsAreEqual,
+        password: !passwordIsValid,
+        confirmPassword: !passwordIsValid || !passwordsAreEqual,
+      });
+      return;
+    }
     onAuthenticate({email, password});
   }
 
   return (
     <View style={styles.authContent}>
-      <AuthForm
-        isLogin={isLogin}
-        onSubmit={submitHandler}
-        credentialsInvalid={credentialsInvalid}
-      />
-      <View style={styles.buttons}>
-        <FlatButton onPress={switchAuthModeHandler}>
-          {isLogin ? 'Create a new user' : 'Log in instead'}
-        </FlatButton>
+      <View style={styles.authAppLogo}>
+        <Text style={styles.brandName}>APP NAME</Text>
+      </View>
+      <View style={styles.authForm}>
+        <AuthForm
+          isLogin={isLogin}
+          onSubmit={submitHandler}
+          credentialsInvalid={credentialsInvalid}
+        />
+        <View style={styles.buttons}>
+          <FlatButton onPress={switchAuthModeHandler}>
+            {isLogin ? 'Create a new user' : 'Log in instead'}
+          </FlatButton>
+        </View>
       </View>
     </View>
   );
@@ -95,16 +101,30 @@ export default AuthContent;
 const getStyles = (colorScheme: ColorSchemeName) => {
   return StyleSheet.create({
     authContent: {
-      marginTop: 64,
+      flex: 1,
+    },
+    authAppLogo: {
+      flex: 1 / 3,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    brandName: {
+      fontSize: 35,
+      fontWeight: 'bold',
+      marginTop: 80,
+    },
+    authForm: {
+      flex: 2 / 3,
+      //marginTop: 64,
       marginHorizontal: 32,
       padding: 16,
       borderRadius: 8,
-      backgroundColor: Colors[colorScheme ?? 'light'].primary800,
-      elevation: 2,
-      shadowColor: 'black',
-      shadowOffset: {width: 1, height: 1},
-      shadowOpacity: 0.35,
-      shadowRadius: 4,
+      //backgroundColor: Colors[colorScheme?? 'light'].primary800,
+      //elevation: 2,
+      //shadowColor: 'black',
+      //shadowOffset: { width: 1, height: 1 },
+      //shadowOpacity: 0.35,
+      //shadowRadius: 4,
     },
     buttons: {
       marginTop: 8,

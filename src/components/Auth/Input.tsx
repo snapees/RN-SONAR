@@ -9,13 +9,13 @@ import {
 
 import {Colors} from '../../constants/colors';
 import {useTheme} from '../../hooks/useTheme';
-import {useState} from 'react';
+// import {useState} from 'react';
 
 interface InputProps {
   label: string;
   type: string;
-  keyboardType: KeyboardTypeOptions;
-  secure: boolean;
+  keyboardType?: KeyboardTypeOptions;
+  secure?: boolean;
   onUpdateValue: (value: string, type: string) => void;
   value: string;
   isInvalid: boolean;
@@ -32,12 +32,12 @@ function Input({
 }: InputProps) {
   const {colorScheme} = useTheme();
   const styles = getStyles(colorScheme);
-  const [inputValue, setInputValue] = useState(value);
+  // const [inputValue, setInputValue] = useState(value);
 
   const handleTextChange = (text: string) => {
     // console.log('Input text:', text);
-    setInputValue(text);
-    onUpdateValue(text, type);
+    // setInputValue(text);
+    onUpdateValue(type, text);
   };
 
   return (
@@ -52,10 +52,10 @@ function Input({
         keyboardType={keyboardType}
         secureTextEntry={secure}
         onChangeText={handleTextChange}
-        value={inputValue}
+        value={value}
         placeholder={label}
         placeholderTextColor={Colors[colorScheme ?? 'light'].textColor}
-        editable={true}
+        // editable={true}
       />
     </View>
   );
@@ -79,7 +79,9 @@ const getStyles = (colorScheme: ColorSchemeName) => {
       paddingVertical: 8,
       paddingHorizontal: 6,
       backgroundColor: Colors[colorScheme ?? 'light'].primary100,
-      borderRadius: 4,
+      borderColor: Colors[colorScheme ?? 'light'].grey,
+      borderRadius: 50,
+      borderWidth: 3,
       fontSize: 16,
     },
     inputInvalid: {
