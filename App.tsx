@@ -59,6 +59,8 @@ import WelcomeScreen from './src/screens/WelcomeScreen';
 // import IconButton from './src/components/UI/IconButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ThemeProvider, {useTheme} from './src/hooks/useTheme';
+import ActivateCase from './src/screens/ActivateCase';
+import PatientDashboard from './src/screens/PatientDashboard';
 
 const Stack = createNativeStackNavigator();
 
@@ -115,6 +117,8 @@ function AuthenticatedStack() {
           ),
         }}
       />
+      <Stack.Screen name="ActivateCase" component={ActivateCase} />
+      <Stack.Screen name="PatientDashboard" component={PatientDashboard} />
     </Stack.Navigator>
   );
 }
