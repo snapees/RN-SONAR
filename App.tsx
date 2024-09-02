@@ -56,8 +56,8 @@ import {Colors} from './src/constants/colors';
 import LoginScreen from './src/screens/LoginScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
-// import IconButton from './src/components/UI/IconButton';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import IconButton from './src/components/UI/IconButton';
+// import Ionicons from 'react-native-vector-icons/Ionicons';
 import ThemeProvider, {useTheme} from './src/hooks/useTheme';
 import ActivateCase from './src/screens/ActivateCase';
 import PatientDashboard from './src/screens/PatientDashboard';
@@ -108,8 +108,8 @@ function AuthenticatedStack() {
         component={WelcomeScreen}
         options={{
           headerRight: ({tintColor}) => (
-            <Ionicons
-              name="exit"
+            <IconButton
+              icon="exit"
               color={tintColor}
               size={24}
               onPress={authCtx.logout}

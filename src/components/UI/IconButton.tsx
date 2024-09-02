@@ -9,7 +9,9 @@ interface IconButtonProps {
   onPress: () => void;
 }
 
+// loadAsync('Ionicons', () => Ionicons.font);
 function IconButton({icon, color, size, onPress}: IconButtonProps) {
+  // console.log('IconButton props:', {icon, color, size});
   return (
     <Pressable
       style={({pressed}) => [styles.button, pressed && styles.pressed]}
