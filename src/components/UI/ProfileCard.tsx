@@ -43,7 +43,7 @@ const ProfileCard = ({
         <Image source={{uri: profileImage}} style={styles.image} />
         <View style={styles.details}>
           <Text style={styles.caseID}>Case ID: {caseID}</Text>
-          <Text style={styles.text}>Name:{name}</Text>
+          <Text style={styles.text}>Name: {name}</Text>
           <Text style={styles.text}>Surgery: {surgery}</Text>
           <Text style={styles.text}>Duration: {duration}</Text>
         </View>
