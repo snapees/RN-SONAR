@@ -1,11 +1,13 @@
-/* eslint-disable react/self-closing-comp */
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {cases} from '../data/data';
 import CollapsibleCard from '../components/UI/CollapsibleCard';
 import {getFormattedDate} from '../util/helper';
 import HealthRing from '../components/UI/HealthRing';
 import {Colors} from '../constants/colors';
+import IconButton from '../components/UI/IconButton';
+import LineChart from '../components/UI/LineChart';
+import FloatingButton from '../components/UI/FloatingButton';
 
 export default function PatientDashboard({route}) {
   const {caseID} = route.params;
@@ -13,52 +15,81 @@ export default function PatientDashboard({route}) {
     eachCase => eachCase.caseID === caseID,
   );
 
+  const expandHandler = () => {
+    console.log('expand');
+  };
+
+  const requestReadingHandler = () => {
+    console.log('requestReadingHandler');
+  };
+
   return (
-    <View style={styles.rootContainer}>
-      {collapsibleCardProps && <CollapsibleCard {...collapsibleCardProps} />}
-      <Text style={styles.todaysDate}>{getFormattedDate(new Date())}</Text>
-      <View style={styles.rings}>
-        <HealthRing
-          value={75}
-          maxValue={100}
-          radius={40}
-          strokeWidth={8}
-          title="Temperature"
-        />
-        <HealthRing
-          value={25}
-          maxValue={100}
-          radius={40}
-          strokeWidth={8}
-          title="Skin"
-        />
-        <HealthRing
-          value={15}
-          maxValue={100}
-          radius={40}
-          strokeWidth={8}
-          title="Redness"
-        />
-      </View>
-      <View style={styles.infoBox}>
+    <ScrollView>
+      <View style={styles.rootContainer}>
+        {collapsibleCardProps && <CollapsibleCard {...collapsibleCardProps} />}
+        <Text style={styles.todaysDate}>{getFormattedDate(new Date())}</Text>
+        <View style={styles.rings}>
+          <HealthRing
+            value={75}
+            maxValue={100}
+            radius={40}
+            strokeWidth={8}
+            title="Temperature"
+          />
+          <HealthRing
+            value={25}
+            maxValue={100}
+            radius={40}
+            strokeWidth={8}
+            title="Skin"
+          />
+          <HealthRing
+            value={15}
+            maxValue={100}
+            radius={40}
+            strokeWidth={8}
+            title="Redness"
+          />
+        </View>
+        <View style={styles.infoBox}>
+          <View>
+            <Text>Reference</Text>
+            <Text>Time: 6:30 am</Text>
+          </View>
+          <View style={styles.infoBoxRightItem}>
+            <Text>At Time</Text>
+            <Text>Time: 10:30 am</Text>
+          </View>
+        </View>
+        <View style={[styles.chart]}>
+          <View style={styles.expandBtn}>
+            <IconButton
+              icon="expand"
+              color="black"
+              size={15}
+              onPress={expandHandler}
+            />
+          </View>
+          <LineChart />
+        </View>
         <View>
-          <Text>Reference</Text>
-          <Text>Time: 6:30 am</Text>
-        </View>
-        <View style={styles.infoBoxRightItem}>
-          <Text>At Time</Text>
-          <Text>Time: 10:30 am</Text>
+          <FloatingButton
+            iconName="chatbox-outline"
+            color="white"
+            size={30}
+            onPress={requestReadingHandler}
+            position={{bottom: -200, right: -200}}
+          />
         </View>
       </View>
-      <View style={[styles.infoBox, styles.chart]}></View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 15,
   },
@@ -83,11 +114,28 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingVertical: 15,
     marginVertical: 10,
+    backgroundColor: '#f9f9f9',
   },
   infoBoxRightItem: {
     borderLeftColor: Colors.common.grey,
     borderLeftWidth: 1,
     paddingLeft: 30,
   },
-  chart: {},
+  chart: {
+    // flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: '#f9f9f9',
+    borderRadius: 10,
+    borderColor: Colors.common.grey,
+    borderWidth: 1,
+    width: '100%',
+    height: 300,
+    // paddingVertical: 15,
+    paddingHorizontal: 5,
+    marginVertical: 10,
+  },
+  expandBtn: {
+    alignSelf: 'flex-end',
+  },
 });
