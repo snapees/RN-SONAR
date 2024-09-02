@@ -6,7 +6,12 @@ import IconButton from './IconButton';
 import CustomSwitch from './Switch';
 import GridItem from './GridItem';
 
-const Grid = () => {
+interface Props {
+  deviceId: string; // Add a deviceId prop
+}
+
+const Grid: React.FC<Props> = ({deviceId}) => {
+  // console.log(deviceId);
   const btnHandler = () => {
     console.log('btnHandler');
   };
@@ -21,7 +26,7 @@ const Grid = () => {
         <GridItem title="Sensor Patch">
           <View style={styles.gridItemConatiner}>
             <View style={styles.deviceDetails}>
-              <Text>Device ID: RU20240618</Text>
+              <Text>Device ID: {deviceId}</Text>
               <View style={styles.rowCentreXYaxes}>
                 <Text>Status</Text>
                 <CustomSwitch />
@@ -48,7 +53,7 @@ const Grid = () => {
         <GridItem title="Reference Unit">
           <View style={styles.gridItemConatiner}>
             <View style={styles.deviceDetails}>
-              <Text>Device ID: RU20240618</Text>
+              <Text>Device ID: {deviceId}</Text>
               <View style={styles.rowCentreXYaxes}>
                 <Text>Status</Text>
                 <CustomSwitch />

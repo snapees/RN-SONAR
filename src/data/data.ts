@@ -1,6 +1,7 @@
 export const cases = [
   {
     caseID: 1001,
+    deviceId: 'RU20240620',
     name: 'John Doe',
     surgery: 'Knee Surgery',
     duration: 3,
@@ -14,6 +15,7 @@ export const cases = [
   {
     caseID: 1030,
     name: 'Kevin Stokes',
+    deviceId: 'RU20240621',
     surgery: 'Elbow Surgery',
     duration: 3,
     profileImage:
@@ -25,6 +27,7 @@ export const cases = [
   },
   {
     caseID: 1020,
+    deviceId: 'RU20240622',
     name: 'Bryan Paul',
     surgery: 'Leg Surgery',
     duration: 3,
@@ -37,6 +40,7 @@ export const cases = [
   },
   {
     caseID: 2030,
+    deviceId: 'RU20240623',
     name: 'U Bolt',
     surgery: 'Hand Surgery',
     duration: 3,
@@ -49,6 +53,7 @@ export const cases = [
   },
   {
     caseID: 9030,
+    deviceId: 'RU20240624',
     name: 'Deepak Sridhar',
     surgery: 'Elbow Surgery',
     duration: 10,

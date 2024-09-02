@@ -8,6 +8,8 @@ import {cases} from '../data/data';
 import CollapsibleCard from '../components/UI/CollapsibleCard';
 import Grid from '../components/UI/Grid';
 
+// const deviceId = 'RU20240620';
+
 function ActivateCase({route}) {
   const authCtx = useContext(AuthContext);
   const token = authCtx.token;
@@ -19,7 +21,10 @@ function ActivateCase({route}) {
   return (
     <View style={styles.rootContainer}>
       {collapsibleCardProps && <CollapsibleCard {...collapsibleCardProps} />}
-      <Grid />
+      {collapsibleCardProps && collapsibleCardProps.deviceId && (
+        <Grid deviceId={collapsibleCardProps.deviceId} />
+      )}
+      {/* <Grid deviceId={deviceId} /> */}
     </View>
   );
 }
