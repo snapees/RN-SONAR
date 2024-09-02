@@ -4,10 +4,15 @@ import React, {useContext} from 'react';
 import {AuthContext} from '../store/context/auth-context';
 import ProfileCard from '../components/UI/ProfileCard';
 import {cases} from '../data/data';
+import FloatingButton from '../components/UI/FloatingButton';
 
 function WelcomeScreen() {
   const authCtx = useContext(AuthContext);
   const token = authCtx.token;
+
+  const addCaseHandler = () => {
+    console.log('addCaseHandler');
+  };
 
   function renderMealItem(itemData: {item: any}) {
     const item = itemData.item;
@@ -27,11 +32,20 @@ function WelcomeScreen() {
     return <ProfileCard {...profileCardProps} />;
   }
   return (
-    <FlatList
-      data={cases}
-      // keyExtractor={item => item.caseID}
-      renderItem={renderMealItem}
-    />
+    <>
+      <FlatList
+        data={cases}
+        // keyExtractor={item => item.caseID}
+        renderItem={renderMealItem}
+      />
+      <FloatingButton
+        iconName="add"
+        color="white"
+        size={30}
+        position={{bottom: 30, right: 20}}
+        onPress={addCaseHandler}
+      />
+    </>
   );
 }
 

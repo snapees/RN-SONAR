@@ -47,6 +47,18 @@ export const cases = [
     gender: 'Male',
     hospital: 'Charnock Hospital',
   },
+  {
+    caseID: 9030,
+    name: 'Deepak Sridhar',
+    surgery: 'Elbow Surgery',
+    duration: 10,
+    profileImage:
+      'https://img.freepik.com/free-photo/young-adult-enjoying-virtual-date_23-2149328221.jpg',
+    status: 'inactive',
+    age: 32,
+    gender: 'Male',
+    hospital: 'Charnock Hospital',
+  },
 ];
 
 export const countries = [
