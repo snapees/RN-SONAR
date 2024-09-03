@@ -37,12 +37,21 @@ const CustomDrawerHeader: React.FC<DrawerHeaderProps> = ({
           <Text style={styles.headerTitle}>
             Welcome To Sonar, Mr. {username}
           </Text>
-          <IconButton
-            icon="ellipsis-vertical"
-            color={options.headerTintColor}
-            size={23}
-            onPress={toggleMenu}
-          />
+          <View style={styles.iconButtonContainer}>
+            <IconButton
+              icon="notifications"
+              color={options.headerTintColor}
+              size={22}
+              onPress={() => navigation.navigate('Notifications')}
+            />
+            <IconButton
+              icon="ellipsis-vertical"
+              color={options.headerTintColor}
+              size={23}
+              onPress={toggleMenu}
+            />
+          </View>
+
           {visible && (
             <ScrollablePopupMenu visible={visible} toggleMenu={toggleMenu}>
               {menuItems.map((item, index) => (
@@ -53,7 +62,7 @@ const CustomDrawerHeader: React.FC<DrawerHeaderProps> = ({
             </ScrollablePopupMenu>
           )}
         </View>
-        <View style={styles.headerTitleContainer}>
+        {/* <View style={styles.headerTitleContainer}>
           <Text style={styles.headerTitle}>Hi Dr. Abc</Text>
           <IconButton
             icon="notifications"
@@ -61,7 +70,7 @@ const CustomDrawerHeader: React.FC<DrawerHeaderProps> = ({
             size={22}
             onPress={() => navigation.navigate('Notifications')}
           />
-        </View>
+        </View> */}
       </View>
     </SafeAreaView>
   );
@@ -91,6 +100,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  iconButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 60, // adjust this value to change the spacing between the icons
+    marginRight: 20,
   },
   menuItem: {
     padding: 10,
