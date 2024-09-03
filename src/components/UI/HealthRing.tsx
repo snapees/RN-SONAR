@@ -34,7 +34,7 @@ const HealthRing: React.FC<HealthRingProps> = ({
           strokeWidth={strokeWidth}
         />
         <Circle
-          stroke="#4caf50" // Progress color
+          stroke="#4c53af" // Progress color
           fill="none"
           cx={radius}
           cy={radius}
