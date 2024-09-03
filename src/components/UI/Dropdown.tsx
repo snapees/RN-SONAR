@@ -11,16 +11,25 @@ import {
   View,
 } from 'react-native';
 import React, {useState, useRef} from 'react';
+import {Colors} from '../../constants/colors';
 
 type Data = Record<string, any>;
 
 interface DropDownProps {
   dataSet: Data[];
+  type: string;
   keyData: string;
   placeHolder: string;
+  onSelect: (value: string, type: string) => void;
 }
 
-const Dropdown = ({dataSet, keyData, placeHolder}: DropDownProps) => {
+const Dropdown = ({
+  dataSet,
+  keyData,
+  placeHolder,
+  type,
+  onSelect,
+}: DropDownProps) => {
   const [search, setSearch] = useState<string>('');
   const [clicked, setClicked] = useState<boolean>(false);
   const [data, setData] = useState(dataSet);
@@ -39,7 +48,7 @@ const Dropdown = ({dataSet, keyData, placeHolder}: DropDownProps) => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{marginBottom: 10}}>
       <Pressable
         style={styles.dropDownInput}
         onPress={() => {
@@ -77,7 +86,7 @@ const Dropdown = ({dataSet, keyData, placeHolder}: DropDownProps) => {
           <FlatList
             data={data}
             renderItem={({item, index}) => {
-              console.log(`tem-${item},key-${keyData}`);
+              // console.log(`tem-${item},key-${keyData}`);
               return (
                 <Pressable
                   style={styles.dropDownSearchResultItem}
@@ -103,7 +112,8 @@ export default Dropdown;
 const styles = StyleSheet.create({
   dropDownInput: {
     width: '100%',
-    height: 50,
+    height: 40,
+    borderColor: Colors.common.grey,
     borderRadius: 30,
     borderWidth: 0.5,
     alignSelf: 'center',
@@ -111,8 +121,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingHorizontal: 15,
   },
   fontWeight600: {
     fontWeight: '600',

@@ -61,6 +61,7 @@ import IconButton from './src/components/UI/IconButton';
 import ThemeProvider, {useTheme} from './src/hooks/useTheme';
 import ActivateCase from './src/screens/ActivateCase';
 import PatientDashboard from './src/screens/PatientDashboard';
+import Profile from './src/screens/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -119,6 +120,7 @@ function AuthenticatedStack() {
       />
       <Stack.Screen name="ActivateCase" component={ActivateCase} />
       <Stack.Screen name="PatientDashboard" component={PatientDashboard} />
+      <Stack.Screen name="Profile" component={Profile} />
     </Stack.Navigator>
   );
 }

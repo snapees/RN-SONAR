@@ -77,12 +77,13 @@ const getStyles = (colorScheme: ColorSchemeName) => {
     },
     input: {
       paddingVertical: 8,
-      paddingHorizontal: 6,
+      paddingHorizontal: 15,
       backgroundColor: Colors[colorScheme ?? 'light'].primary100,
-      borderColor: Colors[colorScheme ?? 'light'].grey,
+      borderColor: Colors.common.grey,
       borderRadius: 50,
       borderWidth: 3,
       fontSize: 16,
+      minWidth: '100%',
     },
     inputInvalid: {
       backgroundColor: Colors[colorScheme ?? 'light'].error100,
