@@ -97,3 +97,9 @@ export const patientReadingsData = [
   {time: '20:00', temperature: 95, skin: 7, redness: 4},
   {time: '20:30', temperature: 99, skin: 7, redness: 4},
 ];
+
+export const userProfile = {
+  userName: 'Amit Thakur',
+  profileUpdated: false,
+  firstLogin: true,
+};
