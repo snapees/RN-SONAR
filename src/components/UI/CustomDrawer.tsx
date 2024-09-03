@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
@@ -12,9 +12,11 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {AuthContext} from '../../store/context/auth-context';
 
 const CustomDrawer = props => {
   const {username, email} = props;
+  const authCtx = useContext(AuthContext);
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView
@@ -77,7 +79,9 @@ const CustomDrawer = props => {
             </Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}} style={{paddingVertical: 15}}>
+        <TouchableOpacity
+          onPress={authCtx.logout}
+          style={{paddingVertical: 15}}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Ionicons name="exit-outline" size={22} />
             <Text

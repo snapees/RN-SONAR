@@ -1,9 +1,10 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react/react-in-jsx-scope */
 
-import {StatusBar} from 'react-native';
+import {StatusBar, Text, View} from 'react-native';
 import AuthContextProvider, {
   AuthContext,
 } from './src/store/context/auth-context';
@@ -52,6 +53,18 @@ function AuthStack() {
   );
 }
 
+function HeaderHome(props) {
+  const {tintColor = 'white'} = props;
+  const username = userProfile.userName;
+  return (
+    <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+      <Text style={{color: tintColor, fontSize: 18, fontWeight: 'bold'}}>
+        Welcome {username}
+      </Text>
+    </View>
+  );
+}
+
 function DrawerNavigator() {
   const username = userProfile.userName;
   const email = userProfile.email;
@@ -63,17 +76,18 @@ function DrawerNavigator() {
       screenOptions={{
         headerStyle: {backgroundColor: '#171c4a'},
         headerTintColor: 'white',
+        headerTitleStyle: {fontWeight: 'bold'},
         sceneContainerStyle: {backgroundColor: '#98AFEB'},
         drawerContentStyle: {backgroundColor: '#98AFEB'},
         //drawerInactiveTintColor: 'white',
         drawerActiveTintColor: '#351401',
-        drawerActiveBackgroundColor: '#acb1bd',
+        drawerActiveBackgroundColor: '#6f7fd1',
       }}>
       <Drawer.Screen
         name="Welcome"
         component={WelcomeScreen}
         options={{
-          title: 'Home',
+          // title: 'Home',
           drawerIcon: ({color, size}) => (
             <Ionicons name="home" color={color} size={size} />
           ),
@@ -85,6 +99,7 @@ function DrawerNavigator() {
               onPress={() => console.log('Bell Pressed')}
             />
           ),
+          headerTitle: props => <HeaderHome {...props} />,
         }}
       />
       <Drawer.Screen
