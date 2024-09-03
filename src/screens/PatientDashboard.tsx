@@ -6,7 +6,7 @@ import {getFormattedDate} from '../util/helper';
 // import HealthRing from '../components/UI/HealthRing';
 import {Colors} from '../constants/colors';
 import IconButton from '../components/UI/IconButton';
-import LineChart from '../components/UI/LineChart';
+import LineChart from '../components/Charts/LineChart';
 import FloatingButton from '../components/UI/FloatingButton';
 import Ring from '../components/UI/Ring';
 
