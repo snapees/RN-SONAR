@@ -72,12 +72,15 @@ const styles = StyleSheet.create({
   },
   inactive: {
     borderColor: 'orange',
+    borderWidth: 2,
   },
   active: {
     borderColor: 'green',
+    borderWidth: 2,
   },
   complete: {
     borderColor: '#10e3ee',
+    borderWidth: 2,
   },
   image: {
     width: 100,

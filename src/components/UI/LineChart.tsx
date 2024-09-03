@@ -32,7 +32,7 @@ export default function LineChart() {
   });
   const {colorScheme} = useTheme();
   const [chartData, setChartData] = useState(DATA);
-  console.log('data-', DATA);
+  // console.log('data-', DATA);
 
   const value = useDerivedValue(() => {
     return state.y.temperature.value.value.toFixed(2);
