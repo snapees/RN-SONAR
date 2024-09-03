@@ -30,9 +30,22 @@ export default function DatePicker({
   };
 
   const getformattedDateOnMode = (date: Date) => {
+    console.log('date-', date);
     if (mode === 'date') return date.toLocaleDateString();
-    else if (mode === 'time') return date.toTimeString();
-    else return date.toISOString();
+    else if (mode === 'time')
+      return date.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: true,
+      });
+    else
+      return `${date.toLocaleDateString()} ${date.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: true,
+      })}`;
   };
 
   const handleConfirm = (date: Date) => {
