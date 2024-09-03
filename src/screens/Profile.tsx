@@ -9,6 +9,7 @@ import Dropdown from '../components/UI/Dropdown';
 import Button from '../components/UI/Button';
 import {Colors} from '../constants/colors';
 import {hospital, profession} from '../data/data';
+import DatePicker from '../components/UI/DatePicker';
 
 export default function Profile() {
   const [enteredName, setEnteredName] = useState('');
@@ -87,6 +88,24 @@ export default function Profile() {
           dataSet={hospital}
           keyData="hospitalName"
           placeHolder="Select Hospital"
+          onSelect={updateInputValueHandler}
+        />
+        <DatePicker
+          mode="date"
+          type="date"
+          placeHolder="Select date"
+          onSelect={updateInputValueHandler}
+        />
+        <DatePicker
+          mode="time"
+          type="date"
+          placeHolder="Select time"
+          onSelect={updateInputValueHandler}
+        />
+        <DatePicker
+          mode="datetime"
+          type="date"
+          placeHolder="Select datetime"
           onSelect={updateInputValueHandler}
         />
       </View>
