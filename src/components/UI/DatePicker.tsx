@@ -8,6 +8,7 @@ interface DatePickerPrpos {
   mode: 'date' | 'time' | 'datetime';
   type: string;
   placeHolder: string;
+  display?: 'inline' | 'spinner';
   onSelect: (value: string, type: string) => void;
 }
 
@@ -15,6 +16,7 @@ export default function DatePicker({
   placeHolder,
   type,
   mode,
+  display = 'spinner',
   onSelect,
 }: DatePickerPrpos) {
   const [isDatePickerVisible, setIsDatePickerVisible] =
@@ -77,6 +79,7 @@ export default function DatePicker({
         mode={mode}
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
+        display={display}
       />
     </View>
   );

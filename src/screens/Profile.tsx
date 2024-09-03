@@ -44,9 +44,10 @@ export default function Profile() {
     <View style={styles.profileContainer}>
       <View style={styles.profileImageContainer}>
         <Image
-          source={{
-            uri: 'https://lh3.googleusercontent.com/a/ACg8ocIDWflACVzhFZqJY6FpB1ywws2y3TT1IY4vqip8I_yjreumr6s=s96-c-rg-br100',
-          }}
+          // source={{
+          //   uri: 'https://lh3.googleusercontent.com/a/ACg8ocIDWflACVzhFZqJY6FpB1ywws2y3TT1IY4vqip8I_yjreumr6s=s96-c-rg-br100',
+          // }}
+          source={require('../assets/user-avatar.png')}
           style={styles.profileImage}
           resizeMode="cover"
         />
@@ -91,6 +92,7 @@ export default function Profile() {
           onSelect={updateInputValueHandler}
         />
         <DatePicker
+          display="inline"
           mode="date"
           type="date"
           placeHolder="Select date"
@@ -120,7 +122,7 @@ const styles = StyleSheet.create({
   profileContainer: {
     flex: 1,
     alignItems: 'center',
-    //justifyContent: 'center',
+    // justifyContent: 'space-evenly',
     padding: 10,
   },
   profileImageContainer: {
@@ -128,11 +130,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   profileImage: {
-    width: 150,
-    height: 150,
+    width: 140,
+    height: 140,
     margin: 10,
-    borderWidth: 2,
-    borderColor: Colors.common.grey,
+    borderWidth: 1,
+    borderColor: Colors.light.primary500,
     borderRadius: 80,
     padding: 10,
   },
@@ -146,5 +148,6 @@ const styles = StyleSheet.create({
   },
   updateButton: {
     alignSelf: 'stretch',
+    justifyContent: 'flex-end',
   },
 });
