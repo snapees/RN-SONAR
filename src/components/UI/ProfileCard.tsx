@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
   },
   details: {
     justifyContent: 'center',
+    width: '100%',
   },
   caseID: {
     fontSize: 18,
