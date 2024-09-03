@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-unstable-nested-components */
@@ -24,8 +23,10 @@ import ActivateCase from './src/screens/ActivateCase';
 import PatientDashboard from './src/screens/PatientDashboard';
 import Profile from './src/screens/Profile';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import CustomDrawer from './src/components/UI/CustomDrawer';
+import CustomDrawer from './src/components/Drawer/CustomDrawer';
 import {userProfile} from './src/data/data';
+import CustonDrawerHeader from './src/components/Drawer/CustonDrawerHeader';
+import Notifications from './src/screens/Notifications';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -53,17 +54,17 @@ function AuthStack() {
   );
 }
 
-function HeaderHome(props) {
-  const {tintColor = 'white'} = props;
-  const username = userProfile.userName;
-  return (
-    <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
-      <Text style={{color: tintColor, fontSize: 18, fontWeight: 'bold'}}>
-        Welcome {username}
-      </Text>
-    </View>
-  );
-}
+// function HeaderHome(props) {
+//   const {tintColor = 'white'} = props;
+//   const username = userProfile.userName;
+//   return (
+//     <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+//       <Text style={{color: tintColor, fontSize: 18, fontWeight: 'bold'}}>
+//         Welcome {username}
+//       </Text>
+//     </View>
+//   );
+// }
 
 function DrawerNavigator() {
   const username = userProfile.userName;
@@ -87,19 +88,20 @@ function DrawerNavigator() {
         name="Welcome"
         component={WelcomeScreen}
         options={{
-          // title: 'Home',
+          title: 'Home',
           drawerIcon: ({color, size}) => (
             <Ionicons name="home" color={color} size={size} />
           ),
-          headerRight: ({tintColor}) => (
-            <IconButton
-              icon="notifications"
-              color={tintColor}
-              size={24}
-              onPress={() => console.log('Bell Pressed')}
-            />
-          ),
-          headerTitle: props => <HeaderHome {...props} />,
+          // headerRight: ({tintColor}) => (
+          //   <IconButton
+          //     icon="notifications"
+          //     color={tintColor}
+          //     size={24}
+          //     onPress={() => console.log('Bell Pressed')}
+          //   />
+          // ),
+          // headerTitle: props => <HeaderHome {...props} />,
+          header: props => <CustonDrawerHeader {...props} />,
         }}
       />
       <Drawer.Screen
@@ -156,6 +158,7 @@ function AuthenticatedStack() {
       <Stack.Screen name="ActivateCase" component={ActivateCase} />
       <Stack.Screen name="PatientDashboard" component={PatientDashboard} />
       <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Notifications" component={Notifications} />
     </Stack.Navigator>
   );
 }
