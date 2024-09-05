@@ -27,6 +27,7 @@ import CustomDrawer from './src/components/Drawer/CustomDrawer';
 import {userProfile} from './src/data/data';
 import CustonDrawerHeader from './src/components/Drawer/CustonDrawerHeader';
 import Notifications from './src/screens/Notifications';
+import ChartScreen from './src/screens/ChartScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -111,6 +112,16 @@ function DrawerNavigator() {
           title: 'Profile',
           drawerIcon: ({color, size}) => (
             <Ionicons name="person" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="ChartScreen"
+        component={ChartScreen}
+        options={{
+          title: 'ChartScreen',
+          drawerIcon: ({color, size}) => (
+            <Ionicons name="stats-chart" color={color} size={size} />
           ),
         }}
       />

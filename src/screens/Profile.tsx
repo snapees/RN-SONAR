@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import {useState} from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, ScrollView, StyleSheet, View} from 'react-native';
 import IconButton from '../components/UI/IconButton';
 import Input from '../components/Auth/Input';
 import Dropdown from '../components/UI/Dropdown';
@@ -41,7 +41,7 @@ export default function Profile() {
   function submitHandler() {}
 
   return (
-    <View style={styles.profileContainer}>
+    <ScrollView style={styles.profileContainer}>
       <View style={styles.profileImageContainer}>
         <Image
           // source={{
@@ -114,14 +114,14 @@ export default function Profile() {
       <View style={styles.updateButton}>
         <Button onPress={submitHandler}>Update</Button>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   profileContainer: {
     flex: 1,
-    alignItems: 'center',
+    // alignItems: 'center',
     // justifyContent: 'space-evenly',
     padding: 10,
   },
